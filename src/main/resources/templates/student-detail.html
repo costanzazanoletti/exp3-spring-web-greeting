@@ -10,11 +10,11 @@
 </head>
 <body>
   <nav th:replace="~{fragments :: navbar('students')}"></nav>
-  <h1>Students</h1>
-  <div th:if="${students.size() == 0}">There are no students</div>
-  <ul th:unless="${students.size() == 0}">
-    <li th:each="student : ${students}"><a th:href="@{|/students/${student.id}|}" th:text="${student.name}"></a></li>
-  </ul>
+  <h1 th:text="|Student:   ${student.name}|"></h1>
+  <div th:object="${student}" th:id="|student_${student.id}|">
+    <p th:text="*{name}"></p>
+    <p>id- [[*{id}]]</p>
+  </div>
   <th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>
